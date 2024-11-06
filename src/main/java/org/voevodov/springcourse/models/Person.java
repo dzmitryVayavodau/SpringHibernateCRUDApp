@@ -1,4 +1,4 @@
-package org.voevodov.springcourse;
+package org.voevodov.springcourse.models;
 
 import jakarta.persistence.Table;
 
@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import org.springframework.stereotype.Component;
 
-@Entity
+@Entity(name = "Person")
 @Component
 @Table(name = "person")
 public class Person {

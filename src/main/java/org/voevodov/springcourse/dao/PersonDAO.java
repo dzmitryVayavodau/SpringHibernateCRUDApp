@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.voevodov.springcourse.Person;
+import org.voevodov.springcourse.models.Person;
 
 
 import java.util.List;
@@ -24,8 +24,6 @@ public class PersonDAO {
     @Transactional(readOnly = true)
     public List<Person> index() {
         Session session = sessionFactory.getCurrentSession();
-
-        System.out.println("personDAO index is working" );
         return session.createQuery("from Person ", Person.class)
                 .getResultList();
     }

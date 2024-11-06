@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.voevodov.springcourse.dao.PersonDAO;
-import org.voevodov.springcourse.Person;
+import org.voevodov.springcourse.models.Person;
 
 
 @Controller
@@ -23,7 +23,6 @@ public class PeopleController {
 
     @GetMapping()
     public String index(Model model) {
-        System.out.println("index is working");
         model.addAttribute("people", personDAO.index());
         return "people/index";
     }
