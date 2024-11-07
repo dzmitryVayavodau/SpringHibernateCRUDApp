@@ -3,6 +3,7 @@ package org.voevodov.springcourse.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.voevodov.springcourse.models.Mood;
 import org.voevodov.springcourse.models.Person;
 import org.voevodov.springcourse.repositories.PeopleRepository;
 
@@ -33,6 +34,7 @@ public class PeopleService {
     @Transactional
     public void save(Person person) {
         person.setCreatedAt(new Date());
+        person.setMood(Mood.CALM);
         peopleRepository.save(person);
     }
 
