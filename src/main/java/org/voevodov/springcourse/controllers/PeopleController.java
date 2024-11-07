@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.voevodov.springcourse.dao.PersonDAO;
 import org.voevodov.springcourse.models.Person;
 import org.voevodov.springcourse.services.ItemsService;
 import org.voevodov.springcourse.services.PeopleService;
@@ -17,21 +18,26 @@ public class PeopleController {
 
     private final PeopleService peopleService;
     private final ItemsService itemsService;
+    private final PersonDAO personDAO;
 
     @Autowired
-    public PeopleController(PeopleService peopleService, ItemsService itemsService) {
+    public PeopleController(PeopleService peopleService, ItemsService itemsService, PersonDAO personDAO) {
         this.peopleService = peopleService;
         this.itemsService = itemsService;
+        this.personDAO = personDAO;
     }
+
+
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("people", peopleService.findAll());
-
-        itemsService.findByItemName("TV");
-        itemsService.findByOwner(peopleService.findAll().get(4));
+//        model.addAttribute("people", peopleService.findAll());
+//
+//        itemsService.findByItemName("TV");
+//        itemsService.findByOwner(peopleService.findAll().get(4));
 
         peopleService.test();
+        personDAO.testNPlus1();
 
         return "people/index";
     }
